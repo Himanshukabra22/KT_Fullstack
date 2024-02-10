@@ -1,0 +1,456 @@
+{
+	"info": {
+		"_postman_id": "0f359937-af9a-43a6-bbca-709efc860a39",
+		"name": "KasperTech_FullStack",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23127590"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Admin Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"admin1\",\r\n    \"username\" : \"admin1\",\r\n    \"email\" : \"admin1@gmail.com\",\r\n    \"password\" : \"admin1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/admin/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"admin",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"admin1\",\r\n    \"password\" : \"admin1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/admin/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"admin",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Device",
+					"item": [
+						{
+							"name": "Create Device",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWM2M2E2NGZhYTFjYzQ3N2Q1NWZjYWUiLCJ1c2VybmFtZSI6ImFkbWluMSIsImlhdCI6MTcwNzQ4OTk5MH0.r_FdKT6GMte6RY9EoyeioWdL__mrUrnN6ldEcUqvmy0",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/admin/device/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"admin",
+										"device",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Show All Devices",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWM2M2E2NGZhYTFjYzQ3N2Q1NWZjYWUiLCJ1c2VybmFtZSI6ImFkbWluMSIsImlhdCI6MTcwNzQ4OTk5MH0.r_FdKT6GMte6RY9EoyeioWdL__mrUrnN6ldEcUqvmy0",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/admin/device/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"admin",
+										"device",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Show Device by Username",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWM2M2E2NGZhYTFjYzQ3N2Q1NWZjYWUiLCJ1c2VybmFtZSI6ImFkbWluMSIsImlhdCI6MTcwNzQ4OTk5MH0.r_FdKT6GMte6RY9EoyeioWdL__mrUrnN6ldEcUqvmy0",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/admin/device/user1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"admin",
+										"device",
+										"user1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Allocate user to given device",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWM2M2E2NGZhYTFjYzQ3N2Q1NWZjYWUiLCJ1c2VybmFtZSI6ImFkbWluMSIsImlhdCI6MTcwNzQ4OTk5MH0.r_FdKT6GMte6RY9EoyeioWdL__mrUrnN6ldEcUqvmy0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\" : \"65c63bf7faa1cc477d55fcb3\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/admin/device/adduser/65c63d0dfaa1cc477d55fcbe",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"admin",
+										"device",
+										"adduser",
+										"65c63d0dfaa1cc477d55fcbe"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Create User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWM2M2E2NGZhYTFjYzQ3N2Q1NWZjYWUiLCJ1c2VybmFtZSI6ImFkbWluMSIsImlhdCI6MTcwNzQ4OTk5MH0.r_FdKT6GMte6RY9EoyeioWdL__mrUrnN6ldEcUqvmy0",
+										"description": "jwt",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"user2\",\r\n    \"password\" : \"user2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/user/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List Users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWM2M2E2NGZhYTFjYzQ3N2Q1NWZjYWUiLCJ1c2VybmFtZSI6ImFkbWluMSIsImlhdCI6MTcwNzQ4OTk5MH0.r_FdKT6GMte6RY9EoyeioWdL__mrUrnN6ldEcUqvmy0",
+										"description": "jwt",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/admin/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"admin",
+										"user"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "User Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"user1\",\r\n    \"password\" : \"user1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/user/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Device",
+					"item": [
+						{
+							"name": "List my devices",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWM2M2JmN2ZhYTFjYzQ3N2Q1NWZjYjMiLCJ1c2VybmFtZSI6InVzZXIxIiwiaWF0IjoxNzA3NDkxNjEzfQ.ME6COS4PzLv3ijY9C-7zkkd-GgqRI7ab7BgQrYN5QrE",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/user/device",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										"device"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update device state",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWM2M2JmN2ZhYTFjYzQ3N2Q1NWZjYjMiLCJ1c2VybmFtZSI6InVzZXIxIiwiaWF0IjoxNzA3NDkxNjEzfQ.ME6COS4PzLv3ijY9C-7zkkd-GgqRI7ab7BgQrYN5QrE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"state\" :{\r\n        \"light\" : 1,\r\n        \"fan\" : 1,\r\n        \"mis\" : 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/user/device/update/65c63d0dfaa1cc477d55fcbe",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										"device",
+										"update",
+										"65c63d0dfaa1cc477d55fcbe"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Room",
+					"item": [
+						{
+							"name": "Create room",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWM2M2JmN2ZhYTFjYzQ3N2Q1NWZjYjMiLCJ1c2VybmFtZSI6InVzZXIxIiwiaWF0IjoxNzA3NDkxNjEzfQ.ME6COS4PzLv3ijY9C-7zkkd-GgqRI7ab7BgQrYN5QrE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"room_name\" : \"user1room1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/user/room/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										"room",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List rooms",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWM2M2JmN2ZhYTFjYzQ3N2Q1NWZjYjMiLCJ1c2VybmFtZSI6InVzZXIxIiwiaWF0IjoxNzA3NDkxNjEzfQ.ME6COS4PzLv3ijY9C-7zkkd-GgqRI7ab7BgQrYN5QrE",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/user/room",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										"room"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
