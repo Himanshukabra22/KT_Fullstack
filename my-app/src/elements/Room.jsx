@@ -1,23 +1,22 @@
 import axios from "axios";
-// import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 
+const DeviceOptions = ({ deviceId }) => {
+  return <option value={deviceId}>{deviceId}</option>;
+};
 
-// let allRooms = [ "1", "2", "3", "4", "5"]
-
-const Device = ({ _id , device_id, room_name }) => {
-  let navigate = useNavigate();
-  // const [allRooms, setAllRooms] = useState([]);
+const Room = ({ _id, device_id, room_name }) => {
+  const [unallocatedDevices, setUnallocatedDevices] = useState([]);
 
   const setDeviceToRoom = async () => {
-    let token = JSON.parse(localStorage.getItem("admin"));
-    const user = document.querySelector("select[name='alloted_to_user']").value;
-    console.log(user);
+    let token = JSON.parse(localStorage.getItem("user"));
+    const device_id = document.getElementsByName("device_id")[0].value;
+    console.log(device_id);
     try {
       const response = await axios.put(
-        `/${_id}`,
+        `http://localhost:3030/api/user/room/update/${_id}`,
         {
-          username: user,
+          device_id: device_id,
         },
         {
           headers: {
@@ -25,17 +24,37 @@ const Device = ({ _id , device_id, room_name }) => {
           },
         }
       );
-
-      if (response.data.status === "ok") {
-        alert("User added to device");
+      if (response.status === 200) {
+        alert("Device assigned to room");
         window.location.reload();
       }
-      // console.log(response.data);
-      navigate("/admin");
     } catch (error) {
       console.error("Error fetching data: ", error);
     }
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let token = JSON.parse(localStorage.getItem("user"));
+        const response = await axios.get(
+          `http://localhost:3030/api/user/room/freedevices`,
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
+        console.log(response.data);
+        if (response.data.status === "ok") {
+          setUnallocatedDevices(response.data.device);
+        }
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <div
@@ -61,9 +80,12 @@ const Device = ({ _id , device_id, room_name }) => {
             <option value={null} selected>
               Options
             </option>
-            {/* {allRooms.map((user) => (
-              <DeviceOptions  />
-            ))} */}
+            {unallocatedDevices.map((device) => (
+              <DeviceOptions
+                deviceId={device.deviceId}
+                allocated={device.allocated}
+              />
+            ))}
           </select>
           <button
             style={{
@@ -82,4 +104,4 @@ const Device = ({ _id , device_id, room_name }) => {
   );
 };
 
-export default Device;
+export default Room;

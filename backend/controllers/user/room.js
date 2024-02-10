@@ -29,17 +29,17 @@ const updateRoom = async (req, res) => {
     let user = await userSchema.findOne({ username: req.user.username });
 
     // check if room exists for the user
-    let found = false;
-    for (let i = 0; i < user.rooms.length; i++) {
-      let cmp = user.rooms[i].room_id.toString();
-      if (cmp == req.params.id) {
-        found = true;
-      }
-    }
-    
-    if (!found) {
-      return res.status(400).send({ status: "not ok", msg: "room not found." });
-    }
+    // let found = false;
+    // for (let i = 0; i < user.rooms.length; i++) {
+    //   let cmp = user.rooms[i].room_id
+    //   if (cmp == req.params.id) {
+    //     found = true;
+    //   }
+    // }
+
+    // if (!found) {
+    //   return res.status(400).send({ status: "not ok", msg: "room not found." });
+    // }
 
     for (let i = 0; i < user.devices.length; i++) {
       let cmp = user.devices[i].deviceId.toString();
@@ -82,4 +82,24 @@ const getRoom = async (req, res) => {
   }
 };
 
-module.exports = { createRoom, getRoom, updateRoom };
+const getFreeDevices = async (req, res) => {
+  try {
+    let user = await userSchema.findOne({ username: req.user.username });
+    let device = user.devices.filter((device) => {
+      return device.allocated === false;
+    });
+
+    if (device) {
+      res.status(200).send({ status: "ok", device });
+    } else {
+      res.status(400).send({ status: "not ok", msg: "rooms not found." });
+    }
+  } catch (error) {
+    if (error) {
+      console.log(error);
+      res.status(400).send({ status: "not ok", msg: "rooms not found." });
+    }
+  }
+};
+
+module.exports = { createRoom, getRoom, updateRoom, getFreeDevices };
