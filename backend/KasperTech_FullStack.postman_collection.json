@@ -27,12 +27,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/admin/register",
+									"raw": "http://localhost:3030/api/admin/register",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "3000",
+									"port": "3030",
 									"path": [
 										"api",
 										"admin",
@@ -57,12 +57,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/admin/login",
+									"raw": "http://localhost:3030/api/admin/login",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "3000",
+									"port": "3030",
 									"path": [
 										"api",
 										"admin",
@@ -84,17 +84,17 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWM2M2E2NGZhYTFjYzQ3N2Q1NWZjYWUiLCJ1c2VybmFtZSI6ImFkbWluMSIsImlhdCI6MTcwNzQ4OTk5MH0.r_FdKT6GMte6RY9EoyeioWdL__mrUrnN6ldEcUqvmy0",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWM2M2E2NGZhYTFjYzQ3N2Q1NWZjYWUiLCJ1c2VybmFtZSI6ImFkbWluMSIsImlhdCI6MTcwNzU4OTY5NH0.aeOf72KqOlBz7DIwBcb798PTEZaEcmV3AiqLUFnWV64",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "http://localhost:3000/api/admin/device/create",
+									"raw": "http://localhost:3030/api/admin/device/create",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "3000",
+									"port": "3030",
 									"path": [
 										"api",
 										"admin",
@@ -182,18 +182,24 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/admin/device/adduser/65c63d0dfaa1cc477d55fcbe",
+									"raw": "http://localhost:3030/api/admin/device/adduser/:deviceId",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "3000",
+									"port": "3030",
 									"path": [
 										"api",
 										"admin",
 										"device",
 										"adduser",
-										"65c63d0dfaa1cc477d55fcbe"
+										":deviceId"
+									],
+									"variable": [
+										{
+											"key": "deviceId",
+											"value": ""
+										}
 									]
 								}
 							},
@@ -248,18 +254,18 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWM2M2E2NGZhYTFjYzQ3N2Q1NWZjYWUiLCJ1c2VybmFtZSI6ImFkbWluMSIsImlhdCI6MTcwNzQ4OTk5MH0.r_FdKT6GMte6RY9EoyeioWdL__mrUrnN6ldEcUqvmy0",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWM2M2E2NGZhYTFjYzQ3N2Q1NWZjYWUiLCJ1c2VybmFtZSI6ImFkbWluMSIsImlhdCI6MTcwNzU3OTAxOX0.TRPpxNnqSMzadnnua5byAtuH3ilPXH0xTDOvttD4V44",
 										"description": "jwt",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "http://localhost:3000/api/admin/user",
+									"raw": "http://localhost:3030/api/admin/user",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "3000",
+									"port": "3030",
 									"path": [
 										"api",
 										"admin",
@@ -286,7 +292,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"username\" : \"user1\",\r\n    \"password\" : \"user1\"\r\n}",
+									"raw": "{\r\n    \"username\" : \"user2\",\r\n    \"password\" : \"user2\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -294,12 +300,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/user/login",
+									"raw": "http://localhost:3030/api/user/login",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "3000",
+									"port": "3030",
 									"path": [
 										"api",
 										"user",
@@ -321,17 +327,17 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWM2M2JmN2ZhYTFjYzQ3N2Q1NWZjYjMiLCJ1c2VybmFtZSI6InVzZXIxIiwiaWF0IjoxNzA3NDkxNjEzfQ.ME6COS4PzLv3ijY9C-7zkkd-GgqRI7ab7BgQrYN5QrE",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWM3YmQ4NDliOWI2MDFkN2JiODdjMjUiLCJ1c2VybmFtZSI6IlVJMjFFQzMxIiwiaWF0IjoxNzA3NTk3MjA2fQ.uu5T7TsTEBJNlgRnVuaRM8a0P64X0IEVSDC_8oaYtsI",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "http://localhost:3000/api/user/device",
+									"raw": "http://localhost:3030/api/user/device",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "3000",
+									"port": "3030",
 									"path": [
 										"api",
 										"user",
@@ -405,12 +411,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/user/room/create",
+									"raw": "http://localhost:3030/api/user/room/create",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "3000",
+									"port": "3030",
 									"path": [
 										"api",
 										"user",
@@ -428,21 +434,49 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWM2M2JmN2ZhYTFjYzQ3N2Q1NWZjYjMiLCJ1c2VybmFtZSI6InVzZXIxIiwiaWF0IjoxNzA3NDkxNjEzfQ.ME6COS4PzLv3ijY9C-7zkkd-GgqRI7ab7BgQrYN5QrE",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWM3YmQ4NDliOWI2MDFkN2JiODdjMjUiLCJ1c2VybmFtZSI6IlVJMjFFQzMxIiwiaWF0IjoxNzA3NTk3MjA2fQ.uu5T7TsTEBJNlgRnVuaRM8a0P64X0IEVSDC_8oaYtsI",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "http://localhost:3000/api/user/room",
+									"raw": "http://localhost:3030/api/user/room",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "3000",
+									"port": "3030",
 									"path": [
 										"api",
 										"user",
 										"room"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list user's free rooms",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWM3ZTRkYjZmZTFiZjllNWMxOTAzNjQiLCJ1c2VybmFtZSI6InVzZXIyIiwiaWF0IjoxNzA3NjAyMDM1fQ.dcdFKVwUGZwiV0cUlCcGCFMocd6htdtAN6uuXPxmM-I",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3030/api/user/room/freedevices",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3030",
+									"path": [
+										"api",
+										"user",
+										"room",
+										"freedevices"
 									]
 								}
 							},
