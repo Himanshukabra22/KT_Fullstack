@@ -20,26 +20,6 @@ const createDevice = async (req, res) => {
   }
 };
 
-// const updateDevice = async (req, res) => {
-//   try {
-//     let update = req.body;
-
-//     let updatedDevice = await deviceSchema.findOneAndUpdate(
-//       { _id: req.params.id },
-//       update
-//     );
-
-//     if (updatedDevice) {
-//       res.status(200).json(updatedDevice);
-//     } else {
-//       res.status(400).send({ status: "not ok", msg: "device not updated." });
-//     }
-//   } catch (error) {
-//     console.log(error);
-//     res.status(400).send({ status: "not ok", msg: "device not updated." });
-//   }
-// };
-
 const getDevice = async (req, res) => {
   try {
     let device = await deviceSchema.find();
@@ -61,11 +41,13 @@ const getDeviceByUsername = async (req, res) => {
     let user = await userSchema.find({ username: req.params.username });
     let devices = [];
     for (let i = 0; i < user[0].devices.length; i++) {
-      let device = await deviceSchema.findOne({ _id: user[0].devices[i].deviceId });
+      let device = await deviceSchema.findOne({
+        _id: user[0].devices[i].deviceId,
+      });
       devices.push(device);
     }
     if (user) {
-      res.status(200).send({ status: "ok", devices});
+      res.status(200).send({ status: "ok", devices });
     } else {
       res.status(400).send({ status: "not ok", msg: "devices not found." });
     }
@@ -82,23 +64,23 @@ const addUser = async (req, res) => {
     let device = await deviceSchema.findOne({ _id: req.params.id });
     let user = await userSchema.findOne({ username: req.body.username });
     if (device && user) {
-        device.alloted_to_user = user._id;
-        user.devices.push({deviceId : device._id, allocated: false});
-        let isUpdatedUser = await user.save();
-        let isUpdatedDevice = await device.save();
-        
-        if (isUpdatedUser && isUpdatedDevice) {
-          res.status(200).send({ status: "ok", msg: "user added to device." });
-        } else {
-          res
-            .status(400)
-            .send({ status: "not ok", msg: "user not added to device." });
-        }
+      device.alloted_to_user = user._id;
+      user.devices.push({ deviceId: device._id, allocated: false });
+      let isUpdatedUser = await user.save();
+      let isUpdatedDevice = await device.save();
+
+      if (isUpdatedUser && isUpdatedDevice) {
+        res.status(200).send({ status: "ok", msg: "user added to device." });
       } else {
         res
           .status(400)
-          .send({ status: "not ok", msg: "user or device not found." });
+          .send({ status: "not ok", msg: "user not added to device." });
       }
+    } else {
+      res
+        .status(400)
+        .send({ status: "not ok", msg: "user or device not found." });
+    }
     // }
   } catch (error) {
     console.log(error);

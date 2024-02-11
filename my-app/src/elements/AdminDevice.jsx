@@ -69,12 +69,13 @@ const Device = ({ _id, alloted_to_user, state: { light, fan, mis } }) => {
   return (
     <div
       style={{
-        border: "1px solid black",
-        padding: "10px",
-        margin: "10px",
+        padding: "2rem 4rem",
+        margin: "1.5rem",
+        boxShadow:" 0 4px 8px 0 rgba(0, 0, 0, 0.18), 0 6px 20px 0 rgba(0, 0, 0, 0.15)"
       }}
+      className="device-card"
     >
-      <p>ID: {_id}</p>
+      <p className="font-bold">ID: {_id}</p>
       {alloted_to_user === null ? (
         <>
           <select
@@ -82,8 +83,8 @@ const Device = ({ _id, alloted_to_user, state: { light, fan, mis } }) => {
             name="alloted_to_user"
             placeholder="Allocated to User"
             style={{
-              margin: "10px",
-              padding: "5px",
+              margin: "1rem",
+              padding: "0.5rem",
             }}
           >
             <option value={null} selected>
@@ -104,7 +105,7 @@ const Device = ({ _id, alloted_to_user, state: { light, fan, mis } }) => {
           </button>
         </>
       ) : (
-        <>User : {alloted_to_user}</>
+        <p className="font-bold">User : {alloted_to_user}</p>
       )}
       <p>State:</p>
       <ul type="none">

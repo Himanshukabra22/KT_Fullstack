@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+// Schemas
 const userSchema = require("../db/models/user.js");
 
 const userLoginCheck = async (req, res, next) => {

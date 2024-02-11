@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+// Schemas
 const deviceSchema = require("../../db/models/device.js");
 const userSchema = require("../../db/models/user.js");
 const roomSchema = require("../../db/models/room.js");
@@ -27,6 +28,8 @@ const updateRoom = async (req, res) => {
   try {
     let update = req.body;
     let user = await userSchema.findOne({ username: req.user.username });
+
+    // Following code can be used to check if room exists for the user
 
     // check if room exists for the user
     // let found = false;

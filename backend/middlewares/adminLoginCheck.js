@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+// Schemas
 const adminSchema = require("../db/models/admin.js");
 
 const adminLoginCheck = async (req, res, next) => {

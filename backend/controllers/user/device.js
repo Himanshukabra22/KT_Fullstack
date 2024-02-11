@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+// Schemas
 const deviceSchema = require("../../db/models/device.js");
 const userSchema = require("../../db/models/user.js");
 
