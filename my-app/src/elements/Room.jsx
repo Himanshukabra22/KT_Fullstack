@@ -57,17 +57,12 @@ const Room = ({ _id, device_id, room_name }) => {
   }, []);
 
   return (
-    <div
-      style={{
-        border: "1px solid black",
-        padding: "10px",
-        margin: "10px",
-      }}
+    <div className="admin-container"
     >
       <p>Room ID: {_id}</p>
       <p>Room Name: {room_name}</p>
       {device_id === null ? (
-        <>
+        <div>
           <select
             defaultValue={null}
             name="device_id"
@@ -96,7 +91,7 @@ const Room = ({ _id, device_id, room_name }) => {
           >
             set Device
           </button>
-        </>
+        </div>
       ) : (
         <p>Device ID: {device_id}</p>
       )}

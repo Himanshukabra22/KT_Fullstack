@@ -53,14 +53,12 @@ const AdminLogin = () => {
       <header>
         <div className="logospan">KasperTech</div>
       </header>
-      <h1>Admin Login</h1>
-      <div className="login-form">
-        <div>
-          <input type="text" name="username" placeholder="Username" />
-          <br />
-          <input type="password" name="password" placeholder="Password" />
-          <br />
-          <button onClick={submitForm}>Login</button>
+      <div className="login-page">
+        <div className="form">
+            <h4 className="login-head">Admin Login</h4>
+            <input type="text" placeholder="username" name="username" />
+            <input type="password" placeholder="password" name="password" />
+            <button onClick={submitForm}>login</button>
         </div>
       </div>
     </>

@@ -3,21 +3,6 @@ import axios from "axios";
 import Device from "../elements/UserDevice";
 import Room from "../elements/Room";
 
-// const Rooms = [
-//   {
-//     _id: "1",
-//     room_id: "1",
-//     device_id: null,
-//     room_name: "Room 1",
-//   },
-//   {
-//     _id: "2",
-//     room_id: "2",
-//     device_id: "2",
-//     room_name: "Room 2",
-//   },
-// ];
-
 const User = () => {
   const [navState, setNavState] = useState(1);
   const [allDevices, setAllDevices] = useState([]);

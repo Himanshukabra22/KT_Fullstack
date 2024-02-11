@@ -142,7 +142,7 @@ const User = () => {
             Create Device{" "}
           </button>
           {allDevices ? (
-            <div id="admin-device-container">
+            <div >
               {allDevices.map((device) => (
                 <Device
                   _id={device._id}

@@ -27,13 +27,7 @@ const Device = ({ _id, state: { light, fan, mis } }) => {
   };
 
   return (
-    <div
-      style={{
-        border: "1px solid black",
-        padding: "10px",
-        margin: "10px",
-      }}
-    >
+    <div className="admin-container">
       <p>ID: {_id}</p>
       <p>State:</p>
       <ul type="none">

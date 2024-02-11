@@ -67,43 +67,38 @@ const Device = ({ _id, alloted_to_user, state: { light, fan, mis } }) => {
   }, []);
 
   return (
-    <div
-      style={{
-        padding: "2rem 4rem",
-        margin: "1.5rem",
-        boxShadow:" 0 4px 8px 0 rgba(0, 0, 0, 0.18), 0 6px 20px 0 rgba(0, 0, 0, 0.15)"
-      }}
-      className="device-card"
-    >
+    <div className="admin-container">
       <p className="font-bold">ID: {_id}</p>
       {alloted_to_user === null ? (
-        <>
-          <select
-            defaultValue={null}
-            name="alloted_to_user"
-            placeholder="Allocated to User"
-            style={{
-              margin: "1rem",
-              padding: "0.5rem",
-            }}
-          >
-            <option value={null} selected>
-              Options
-            </option>
-            {allUsers.map((user) => (
-              <UserOptions username={user.username} _id={user._id} />
-            ))}
-          </select>
-          <button
-            style={{
-              margin: "10px",
-              padding: "5px",
-            }}
-            onClick={addUsertoDevice}
-          >
-            submit
-          </button>
-        </>
+        <div>
+          <>
+            <select
+              defaultValue={null}
+              name="alloted_to_user"
+              placeholder="Allocated to User"
+              style={{
+                margin: "1rem",
+                padding: "0.5rem",
+              }}
+            >
+              <option value={null} selected>
+                Options
+              </option>
+              {allUsers.map((user) => (
+                <UserOptions username={user.username} _id={user._id} />
+              ))}
+            </select>
+            <button
+              style={{
+                margin: "10px",
+                padding: "5px",
+              }}
+              onClick={addUsertoDevice}
+            >
+              submit
+            </button>
+          </>
+        </div>
       ) : (
         <p className="font-bold">User : {alloted_to_user}</p>
       )}
