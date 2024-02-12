@@ -44,7 +44,7 @@ const User = () => {
           }
         );
         console.log(response.data);
-        setAllRooms(response.data.rooms);
+        setAllRooms(response.data.rooms.reverse());
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
@@ -70,8 +70,15 @@ const User = () => {
         }
       );
       if (response.status === 200) {
-        alert("Room created");
-        window.location.reload();
+        const response = await axios.get(
+          `http://localhost:3030/api/user/room`,
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
+        setAllRooms(response.data.rooms.reverse());
       }
       // console.log(response.data);
     } catch (error) {
