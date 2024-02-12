@@ -4,14 +4,54 @@ import Device from "../elements/AdminDevice";
 import AdminUser from "../elements/AdminUser";
 
 const User = () => {
-  const [navState, setNavState] = useState(1);
+  const [navState, setNavState] = useState(0);
   const [allUsers, setAllUsers] = useState([]);
   const [allDevices, setAllDevices] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let token = JSON.parse(localStorage.getItem("admin"));
+        const response = await axios.get(
+          `http://localhost:3030/api/admin/user`,
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
+        setAllUsers(response.data.user.reverse());
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let token = JSON.parse(localStorage.getItem("admin"));
+        const response = await axios.get(
+          `http://localhost:3030/api/admin/device/`,
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
+        setAllDevices(response.data.device.reverse());
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const createDevice = async () => {
     try {
       let token = JSON.parse(localStorage.getItem("admin"));
-      const response = await axios.post(
+      const response1 = await axios.post(
         `http://localhost:3030/api/admin/device/create`,
         null,
         {
@@ -20,9 +60,17 @@ const User = () => {
           },
         }
       );
-      if (response.data.status === "ok") {
-        alert("Device created");
-        window.location.reload();
+      if (response1.status === 200) {
+        const response2 = await axios.get(
+          `http://localhost:3030/api/admin/device/`,
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
+        response2.data.device.reverse();
+        setAllDevices(response2.data.device);
       }
     } catch (error) {
       console.error("Error fetching data: ", error);
@@ -49,9 +97,16 @@ const User = () => {
             },
           }
         );
-        if (response.data.status === "ok") {
-          alert("User created");
-          window.location.reload();
+        if (response.status === 200) {
+          const response = await axios.get(
+            `http://localhost:3030/api/admin/user`,
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          );
+          setAllUsers(response.data.user.reverse());
         }
         // console.log(response.data);
       }
@@ -59,51 +114,6 @@ const User = () => {
       console.error("Error fetching data: ", error);
     }
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let token = JSON.parse(localStorage.getItem("admin"));
-        const response = await axios.get(
-          `http://localhost:3030/api/admin/user`,
-          {
-            headers: {
-              Authorization: token,
-            },
-          }
-        );
-        // console.log(response.data);
-        setAllUsers(response.data.user);
-      } catch (error) {
-        console.error("Error fetching data: ", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      // console.log(token);
-      try {
-        let token = JSON.parse(localStorage.getItem("admin"));
-        const response = await axios.get(
-          `http://localhost:3030/api/admin/device/`,
-          {
-            headers: {
-              Authorization: token,
-            },
-          }
-        );
-
-        setAllDevices(response.data.device);
-      } catch (error) {
-        console.error("Error fetching data: ", error);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   return (
     <>
@@ -115,7 +125,7 @@ const User = () => {
         <button
           className="button"
           onClick={() => {
-            setNavState(1);
+            setNavState(0); console.log("Hell0");
           }}
         >
           Devices
@@ -123,13 +133,13 @@ const User = () => {
         <button
           className="button"
           onClick={() => {
-            setNavState(0);
+            setNavState(1); console.log("World");
           }}
         >
           Users
         </button>
       </div>
-      {navState ? (
+      {navState === 0 ? (
         <>
           <button
             onClick={createDevice}
@@ -142,7 +152,7 @@ const User = () => {
             Create Device{" "}
           </button>
           {allDevices ? (
-            <div >
+            <div>
               {allDevices.map((device) => (
                 <Device
                   _id={device._id}

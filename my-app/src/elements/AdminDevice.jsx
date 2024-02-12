@@ -33,11 +33,21 @@ const Device = ({ _id, alloted_to_user, state: { light, fan, mis } }) => {
         }
       );
 
-      if (response.data.status === "ok") {
+      if (response.status === 200) {
+        const response = await axios.get(
+          "http://localhost:3030/api/admin/user",
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
+        setAllUsers(response.data.user.reverse());
         alert("User added to device");
-        window.location.reload();
       }
-      // console.log(response.data);
+      else{
+        alert("User not added to device due to some error. Please try again.");
+      }
       navigate("/admin");
     } catch (error) {
       console.error("Error fetching data: ", error);
@@ -57,12 +67,11 @@ const Device = ({ _id, alloted_to_user, state: { light, fan, mis } }) => {
           }
         );
 
-        setAllUsers(response.data.user);
+        setAllUsers(response.data.user.reverse());
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
     };
-
     fetchData();
   }, []);
 
@@ -84,7 +93,7 @@ const Device = ({ _id, alloted_to_user, state: { light, fan, mis } }) => {
               <option value={null} selected>
                 Options
               </option>
-              {allUsers.map((user) => (
+              {allUsers.reverse().map((user) => (
                 <UserOptions username={user.username} _id={user._id} />
               ))}
             </select>

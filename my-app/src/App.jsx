@@ -10,13 +10,13 @@ import Admin from "./components/Admin";
 
 function App() {
 
-  // const userLoginCheck = () => {
-  //   if (localStorage.getItem("user") === null) {
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // };
+  const userLoginCheck = () => {
+    if (localStorage.getItem("user") === null) {
+      return false;
+    } else {
+      return true;
+    }
+  };
 
   const adminLoginCheck = () => {
     if (localStorage.getItem("admin") === null) {
@@ -33,7 +33,7 @@ function App() {
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/userlogin" element={<UserLogin />} />
           <Route exact path="/adminlogin" element={<AdminLogin />} />
-          <Route exact path="/user" element={<User />} />
+          <Route exact path="/user" element={userLoginCheck ? <User/> : <UserLogin />} />
           <Route exact path="/admin" element={adminLoginCheck ? <Admin/> : <AdminLogin/>} />
         </Routes>
       </BrowserRouter>
