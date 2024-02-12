@@ -26,12 +26,10 @@ const AdminLogin = () => {
           }
         );
         let data = response.data;
-        console.log(data);
-        console.log(data.status);
-        console.log(data.token);
         if (data.status === "ok") {
           localStorage.setItem("admin", JSON.stringify(data.token));
           navigate("/admin");
+          window.location.reload();
         } else {
           alert("Invalid admin username or password");
           navigate("/adminlogin");

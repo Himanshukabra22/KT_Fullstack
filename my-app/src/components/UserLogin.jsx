@@ -31,6 +31,7 @@ const UserLogin = () => {
         if (data.status === "ok") {
           localStorage.setItem("user", JSON.stringify(data.token));
           navigate("/user");
+          window.location.reload();
         } else {
           alert("Invalid username or password");
           navigate("/userlogin");
