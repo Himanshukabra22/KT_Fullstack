@@ -28,13 +28,6 @@ const deviceRoutesFromUser = require("./routes/user/device");
 const roomRoutesFromUser = require("./routes/user/room");
 
 //Admin APIs
-// app.use("/api/admin", adminRoutes);
-// app.use("/api/agent",agent_responsequery);
-// app.use("/api/agent",agent_resp_accessqueries);
-// app.use("/api/agent",agent_noresp_accessqueries);
-// app.use("/api/agent",agentAuth);
-
-//Admin APIs
 app.use("/api/admin", adminRoutes);
 app.use("/api/admin", adminUserRoutes);
 app.use("/api/admin/device", deviceRoutes);
